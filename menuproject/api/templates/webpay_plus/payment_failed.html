@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transacción Fallida</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f8d7da;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        h1 {
+            color: #721c24;
+        }
+        p {
+            color: #721c24;
+        }
+        button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Transacción Fallida</h1>
+        <p>{{ error_message }}</p>  <!-- Display the error message here -->
+
+        <!-- Script to redirect after clicking the button -->
+        <script>
+            var url = "https://snmenu-atonna.com/";  // URL to redirect to
+
+            function redirectToPaymentResult() {
+                window.location.href = url;
+            }
+        </script>
+        
+        <!-- Button to trigger redirect -->
+        <button onclick="redirectToPaymentResult()">
+            Ir a la página principal
+        </button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Status</title>
+</head>
+<body>
+    {% if success_message %}
+        <div class="alert alert-success">{{ success_message }}</div>
+    {% elif error_message %}
+        <div class="alert alert-danger">{{ error_message }}</div>
+    {% else %}
+        <div class="alert alert-success">Transaction Complete</div>
+    {% endif %}
+
+    <p>Su recibo de pago fue enviado por email</p>
+
+    <!-- Button to redirect the user back to the frontend -->
+    <script>
+        var status = "{{ response.status }}";
+        var amount = "{{ response.amount }}";
+        var response_code = "{{ response_code }}"; 
+        var buy_order = "{{ response.buy_order }}";
+        var session_id = "{{ response.session_id }}";
+        var transaction_date = "{{ response.transaction_date }}";
+        var authorization_code = "{{ response.authorization_code }}";
+        var card_number = "{{ response.card_detail.card_number }}";
+        var restaurant_rut = "{{ restaurant_rut }}";
+        var action = "{{ action }}";
+
+        var message = "";
+
+        if (action === "CREATING") {
+            message = "El restaurante ha sido creado exitosamente";
+        };
+        if (action === "REACTIVATING") {
+            message = "Su restaurant ha sido reactivado";
+        };
+        if (action === "INITIALMENULOAD") {
+            message = "El pago para la solicitud de carga inicial del menú fué realizado";
+        };
+        if (action === "PAYINGNORMALFEE") {
+            message = "El pago de la cuota mensual fué realizado";
+        };
+        
+        if (action === "INITIALMENULOAD") {
+            var restaurant_id = "{{ restaurant_id }}";
+
+            var url = "https://snmenusidekick.com/webpaypluspaymentresult/?restaurant=" + encodeURIComponent(restaurant_id) + "&status=" + encodeURIComponent(status) + "&amount=" + encodeURIComponent(amount) + "&response_code=" + encodeURIComponent(response_code) + "&buy_order=" + encodeURIComponent(buy_order) + "&session_id=" + encodeURIComponent(session_id) + "&transaction_date=" + encodeURIComponent(transaction_date) + "&authorization_code=" + encodeURIComponent(authorization_code) + "&card_number=" + encodeURIComponent(card_number) + "&restaurant_rut=" + encodeURIComponent(restaurant_rut) + "&message=" + encodeURIComponent(message);
+        } else {
+            if (action === "CREATING") {
+                var url = "https://snmenusidekick.com/restaurantcreatedshowlinktoatonna";
+            } else {
+                var restaurant_id = "{{ restaurant_id }}";
+                
+                var url = "https://snmenu.com/webpaypluspaymentresult/?restaurant=" + encodeURIComponent(restaurant_id) + "&status=" + encodeURIComponent(status) + "&amount=" + encodeURIComponent(amount) + "&response_code=" + encodeURIComponent(response_code) + "&buy_order=" + encodeURIComponent(buy_order) + "&session_id=" + encodeURIComponent(session_id) + "&transaction_date=" + encodeURIComponent(transaction_date) + "&authorization_code=" + encodeURIComponent(authorization_code) + "&card_number=" + encodeURIComponent(card_number) + "&restaurant_rut=" + encodeURIComponent(restaurant_rut) + "&message=" + encodeURIComponent(message);
+            }
+        }
+
+        function redirectToPaymentResult() {
+            window.location.href = url;
+        }
+    </script>
+    
+    <button onclick="redirectToPaymentResult()">
+        Ir a resultado de pago
+    </button>
+</body>
+</html>

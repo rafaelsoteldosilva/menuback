@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar con Webpay</title>
+</head>
+<body>
+    <h2>Redirigiendo al pago...</h2>
+    <form id="paymentForm" action="{{ url }}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="token_ws" value="{{ token_ws }}" />
+        <button type="submit">Pagar</button>
+    </form>
+
+    <script>
+        // Automatically submit the form once the page is loaded
+        document.getElementById("paymentForm").submit();
+    </script>
+</body>
+</html>
