@@ -96,8 +96,8 @@ If needed for portfolio use, this can be described as backend support for paymen
 - Django Templates
 - REST-style backend structure
 - Utility-based business logic modules
-
-> You can later refine this section with the exact packages from `requirements.txt`.
+- Image hostings like Cloudinary
+- Web protection against hacking using tokens
 
 ---
 
