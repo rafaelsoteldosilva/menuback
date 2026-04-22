@@ -12,6 +12,8 @@ This backend was built to support a digital menu solution for restaurants. The g
 
 This repository represents the backend of that solution and demonstrates backend architecture, workflow-oriented business logic, data handling, and integration support for a React frontend.
 
+[Please click here to go to the portfolio](https://www.google.com)
+
 ---
 
 ## Business Problem
